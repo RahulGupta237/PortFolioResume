@@ -9,7 +9,7 @@ def home(request):
     return render(request,"portfolio/Home.html",context=data)
 
 @csrf_protect
-@csrf_protect
+@csrf_exempt
 def contacus(request):
 
     form=NoteForm()
