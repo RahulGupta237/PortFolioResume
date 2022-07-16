@@ -2,11 +2,13 @@ from django.shortcuts import render
 from . forms import NoteForm
 from .models import Note
 from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def home(request):
     data={ "home":"active"}
     return render(request,"portfolio/Home.html",context=data)
 
+@csrf_protect
 @csrf_protect
 def contacus(request):
 
