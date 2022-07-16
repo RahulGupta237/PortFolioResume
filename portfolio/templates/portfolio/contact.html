@@ -1,0 +1,125 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="container mt-5">
+    <h1 class="text-warning mb-5 border-bottom" style="font-family: 'Edu VIC WA NT Beginner', cursive;">CONTACT US
+    </h1>
+    <p class="text-white">Do you have any Query please contact us <a class="mx-3"  href="https://github.com/RahulGupta237" target="_blank"><i class="fa-brands fa-github  fa-2xl"></i></a>  <a href="https://github.com/RahulGupta237" target="_blank"><i class="fa-brands fa-github  fa-2xl"></i></a>   
+        <a class="mx-3" href="https://www.linkedin.com/in/rahul-gupta-705249169/" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
+    <div class="row text-white text-center mb-5">
+        
+            <div class="row col-sm-5 mt-5">
+    
+                <form method="post"  id="noteform">
+                    
+                    <b class="text-warning">Reach to us--</b> 
+                    
+                    {{form|crispy}}
+                    {% csrf_token %}
+
+                    <input class="btn btn-success p-1" type="submit" value="Save">
+                
+                    </form>
+              </div>
+
+
+              
+
+
+
+
+              <div class="col-sm-5 mx-4 mb-8">
+                <h3 class="mt-5">your comment </h3>
+ 
+    
+    <table class="table table-dark table-striped container mr-7 mb-8">
+       
+     
+      <thead>
+        <tr>
+          <th>S.no</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data_retrieve_frm_database %}
+        <tr>
+          <th>{{forloop.counter}}</th>
+          <td>{{i.name}}</td>
+          <td>{{i.email}}</td>
+          <td>{{i.subject}}</td>
+          <td>{{i.description}}</td>  
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+    </div>
+
+    <div class="text-center">
+        <a href="https://github.com/RahulGupta237" target="_blank"><i class="fa-brands fa-github"></i></a>
+    
+    
+    </div>
+  </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+
+
+<script>
+
+//$("#id_name").attr("placeholder","your name")
+
+//$("#id_email").attr("placeholder","your email")
+//$("#id_subject").attr("placeholder","Write subject")
+//$("#id_description").attr("placeholder","Write description")
+
+    $(document).ready('submit','#noteform',function(e)
+    {
+        e.preventDefault();
+        var name=$('#id_name').val();
+        var email=$('#id_email').val();
+        var subject=$('#id_subject').val();
+        var description=$('#id_description').val();
+        var csrf=$('input[csrfmiddlewaretoken]').val();
+        $.ajax({
+            type:'POST',
+            url:'/con/',
+            data:{
+                
+                'name':username,
+                'email':email,
+                'subject':subject,
+                'description':description,
+
+                csrf:csrf,
+            
+            
+        
+    
+            },
+            success:function(data){
+                console.log(data);
+              
+                
+            },
+        })
+    
+        
+    
+    
+    }
+    )
+    $("#noteform").reset();
+    </script>
+    
+
+{% endblock content %}
