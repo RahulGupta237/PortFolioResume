@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-)i%ji#!31x%$sp0##215s5+t+852oeuv#cn(1jo)s4%%4&fcc0
 DEBUG = False
 
 ALLOWED_HOSTS = ["heroku.com/images237","localhost","*","8001"]
+CSRF_TRUSTED_ORIGINS = ['https://*.heroku.com','https://*.127.0.0.1']
 
 
 # Application definition

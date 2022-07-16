@@ -3,6 +3,7 @@ from . forms import NoteForm
 from .models import Note
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 # Create your views here.
 def home(request):
     data={ "home":"active"}
@@ -34,4 +35,5 @@ def contacus(request):
         note.subject=subject
         note.save()
         print("Successfully save in database")
+        messages.success(request, f"{name} commented updated now")
     return render(request,"portfolio/contact.html",context=data)

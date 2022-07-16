@@ -9,10 +9,17 @@
     <p class="text-white">Do you have any Query please contact us <a class="mx-3"  href="https://github.com/RahulGupta237" target="_blank"><i class="fa-brands fa-github  fa-2xl"></i></a>  <a href="https://github.com/RahulGupta237" target="_blank"><i class="fa-brands fa-github  fa-2xl"></i></a>   
         <a class="mx-3" href="https://www.linkedin.com/in/rahul-gupta-705249169/" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
     <div class="row text-white text-center mb-5">
-        
+    
             <div class="row col-sm-5 mt-5">
     
                 <form method="post"  id="noteform">
+                  {% if messages %}
+                  <ul class="messages p-4">
+                      {% for message in messages %}
+                      <li{% if message.tags %} class="bg-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
                     
                     <b class="text-warning">Reach to us--</b> 
                     
