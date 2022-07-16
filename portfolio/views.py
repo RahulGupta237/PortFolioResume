@@ -4,7 +4,8 @@ from .models import Note
 from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 def home(request):
-    return render(request,"portfolio/Home.html")
+    data={ "home":"active"}
+    return render(request,"portfolio/Home.html",context=data)
 
 @csrf_protect
 def contacus(request):
@@ -13,7 +14,8 @@ def contacus(request):
     data_retrieve_from_noteform=Note.objects.filter()
     data={
         "form":form,
-        "data_retrieve_frm_database":data_retrieve_from_noteform
+        "data_retrieve_frm_database":data_retrieve_from_noteform,
+        "contact":"active"
     }
     
     if request.method=="POST":
