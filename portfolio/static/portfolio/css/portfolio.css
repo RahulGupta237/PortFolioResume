@@ -1,0 +1,28 @@
+
+
+html,
+body{
+    height: 100%;
+}
+.container-fluid{
+    min-height: 100%;
+}
+
+
+a.nav-link{
+    color: whitesmoke;
+    
+}
+
+a.nav-link.hover{
+    color: #06050a;
+    background-color: rgb(60, 15, 87);
+    
+}
+
+a.nav-link.active{
+    color: #06050a;
+    background-color: #0f4057;
+    font-weight: bold;
+    
+}
